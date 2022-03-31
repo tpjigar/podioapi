@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('podio/auth',[\App\Http\Controllers\PodioController::class, 'auth']);
-Route::get('podio/Items',[\App\Http\Controllers\PodioController::class, 'Items']);
+Route::get('podio/items',[\App\Http\Controllers\PodioController::class, 'Items']);
 Route::get('podio/item/create',[\App\Http\Controllers\PodioController::class, 'itemCreate']);
-Route::get('podio/item/update',[\App\Http\Controllers\PodioController::class, 'itemUpdate']);
+Route::get('podio/item/update/{id}',[\App\Http\Controllers\PodioController::class, 'itemUpdate']);
 Route::get('podio/file/upload',[\App\Http\Controllers\PodioController::class, 'fileUpload']);
 

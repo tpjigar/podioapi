@@ -15,7 +15,7 @@ class PodioController extends Controller
     public function auth()
     {
         if($this->auth){
-            dd('authentication succesfully');
+            dd("authenticated succesfully");
         }
     }
 
@@ -53,11 +53,11 @@ class PodioController extends Controller
         }
     }
 
-    public function itemUpdate()
+    public function itemUpdate($id)
     {
         try {
             $updatedAttributes = ['fields' => [
-                "project-title" => "Updated title",
+                "project-title" => "Updated title for : ". $id,
                 "progress" => 75,
                 "status" => [1],
                 "start-date" => ['start_date' => "2022-03-30", 'end_date' => "2022-04-29"],
@@ -66,7 +66,7 @@ class PodioController extends Controller
                 'file_ids' => [],
                 'tags' => ['updatedTag'],
             ];
-            $podioUpdate = \PodioItem::update('2055336509', $updatedAttributes);
+            $podioUpdate = \PodioItem::update($id, $updatedAttributes);
             dd($podioUpdate);
         } catch (\PodioError $e) {
             dd($e);
@@ -76,8 +76,9 @@ class PodioController extends Controller
     public function fileUpload()
     {
         try {
-            $path = base_path().'/public/amit.jpg';
-            $file = \PodioFile::upload($path, 'amit.jpg');
+            $path = base_path().'/public/clothes.jpg';
+            $file = \PodioFile::upload($path, 'clothes.jpg');
+            dd($file);
         } catch (\PodioError $e) {
             dd($e);
         }
