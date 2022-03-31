@@ -10,11 +10,7 @@ class HomeController extends Controller
     {
 
         \Podio::setup(env('PODIO_APP_CLIENT'), env('PODIO_APP_SECRATE'));
-//        $auth = \Podio::authenticate('password', [
-//            'username' => 'tp.jigar@gmail.com',
-//            'password' => 'Jigar@123',
-//        ]);
-        $auth = \Podio::authenticate_with_password('tp.jigar@gmail.com', 'Jigar@123');
+        $auth = \Podio::authenticate_with_password(env('PODIO_APP_USERNAME'), env('PODIO_APP_PASSWORD'));
         if($auth){
             dd('authentication succesfully');
         }
